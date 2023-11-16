@@ -11,7 +11,10 @@ t_list** mx_filling_arr(char** file_arr, int count_args, t_list** file_list, int
 		struct dirent *test;
 		struct stat stat_temp;
 
-		stat(file_arr[i], &stat_temp);
+		if(stat(file_arr[i], &stat_temp) == -1){
+			mx_arg_error(file_arr[i]);
+			exit(1);
+		}
 		if (!S_ISDIR(stat_temp.st_mode)) {
 			mx_push_back(&temp_list, (void *) file_arr[i]);
 		} else {

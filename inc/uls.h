@@ -24,4 +24,7 @@ t_list** mx_filling_arr(char** file_arr, int count_args, t_list** file_list, int
 bool mx_list_cmp(void* a, void* b);
 int mx_find_max_name_len(t_list* list);
 t_list* mx_get_elem_in_list(t_list* list, int index);
+void mx_error_check(char* flags, int flag_count);
+void mx_check_flag(char* flags);
+void mx_arg_error(char* file);
 
