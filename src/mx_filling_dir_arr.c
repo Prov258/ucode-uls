@@ -23,6 +23,12 @@ t_list** mx_filling_arr(char** file_arr, int count_args, t_list** file_list, int
 			}
 		}
 	}
+
+	for (int i = 0; i < dir_list_len; i++) {
+		t_list* temp = mx_sort_list(dir_list[i]->next, mx_list_cmp);
+		dir_list[i]->next = temp;
+	}
+
 	*dir_len = dir_list_len;
 	*file_list = temp_list;
     return dir_list;
