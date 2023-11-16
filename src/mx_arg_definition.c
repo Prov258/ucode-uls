@@ -23,5 +23,7 @@ char** mx_arg_definition(char* argv[], int argc, int argumentsCount){
             resultCount++;
         }
     }
+    mx_bubble_sort(result, argumentsCount);
     return result;
 }
+
