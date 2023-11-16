@@ -21,4 +21,7 @@ char* mx_flag_definition(char* argv[], int argc, int* countArgs, int* countFlags
 void mx_print_files(int dir_len, t_list* file_list);
 void mx_print_dir(t_list** dir_list, int dir_list_len);
 t_list** mx_filling_arr(char** file_arr, int count_args, t_list** file_list, int* dir_len);
+void mx_error_check(char* flags, int flag_count);
+void mx_check_flag(char* flags);
+void mx_arg_error(char* file);
 
