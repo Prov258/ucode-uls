@@ -10,6 +10,21 @@ bool mx_is_flag(char* flags, int n, char flag) {
 	return false;
 }
 
+int mx_count_cols(int width, int max_len) {
+	int cols = 0;
+
+	while (width >= max_len) {
+		width -= max_len;
+		cols++;
+
+		if (cols == 1) {
+			max_len += 2;
+		}
+	}
+
+	return cols;
+}
+
 bool mx_list_cmp(void* a, void* b) {
 	return mx_strcmp((char *) a, (char *) b) > 0;
 }
