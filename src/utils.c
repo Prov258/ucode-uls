@@ -1,5 +1,15 @@
 #include <uls.h>
 
+bool mx_is_flag(char* flags, int n, char flag) {
+	for (int i = 0; i < n; i++) {
+		if (flags[i] == flag) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
 bool mx_list_cmp(void* a, void* b) {
 	return mx_strcmp((char *) a, (char *) b) > 0;
 }
