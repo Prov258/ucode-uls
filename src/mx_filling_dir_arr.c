@@ -1,4 +1,4 @@
-#include <uls.h>
+#include "uls.h"
 
 t_list** mx_filling_arr(char** file_arr, int count_args, t_list** file_list, int* dir_len){
     t_list** dir_list = (t_list**) malloc(sizeof(t_list*) * count_args);
@@ -20,7 +20,7 @@ t_list** mx_filling_arr(char** file_arr, int count_args, t_list** file_list, int
 		} else {
 			dir_list[dir_list_len++] = mx_create_node((void *) file_arr[i]);
 			for (test = readdir(dir); test != NULL; test = readdir(dir)) {
-				if (mx_strcmp(test->d_name, ".") != 0 && mx_strcmp(test->d_name, "..") != 0) {
+				if (test->d_name[0] != '.') {
 					mx_push_back(&dir_list[dir_list_len - 1], (void *) test->d_name);
 				}
 			}
@@ -36,3 +36,4 @@ t_list** mx_filling_arr(char** file_arr, int count_args, t_list** file_list, int
 	*file_list = temp_list;
     return dir_list;
 }
+

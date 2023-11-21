@@ -1,31 +1,6 @@
-#include <uls.h>
+#include "uls.h"
 
 void mx_make_flag_l(t_list** dir_list, int dir_len){
-
-    // unsigned long long blocks_num = 0;  
-    // struct stat stat_temp;
-
-    // for (int i = 0; i < dir_len; i++){
-    //     t_list* current = dir_list[i];
-    //     while (current != NULL) { 
-    //         stat((char*) current->data, &stat_temp);
-    //         blocks_num += stat_temp.st_blocks;
-    //         current = current->next;
-    //     }        
-    // }
-    // for (int i = 0; i < dir_len; i++)
-    // {
-    //     t_list* this = dir_list[i];
-    //     mx_printstr((char*) this->data);
-    //     while(this->next != NULL){
-    //         this = this->next;
-    //         mx_printstr((char*) this->data);
-    //     } 
-    // }
-    
-    // mx_printstr("total ");
-    // mx_printint(blocks_num);
-    // mx_printstr("\n");
     for (int i = 0; i < dir_len; i++) {
         struct stat statRes;
         long total_blocks = 0;

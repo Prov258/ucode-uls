@@ -1,4 +1,4 @@
-#include <uls.h>
+#include "uls.h"
 
 char** mx_arg_definition(char* argv[], int argc, int* p_argumentsCount){
     int argumentsCount = *p_argumentsCount;
@@ -6,7 +6,7 @@ char** mx_arg_definition(char* argv[], int argc, int* p_argumentsCount){
     if(argumentsCount == 0){
         char** result = (char **) malloc(sizeof(char *));
         result[0] = mx_strdup("./");
-        *p_argumentsCount = argumentsCount + 1;
+        *p_argumentsCount = 1;
 
         return result;
     }
