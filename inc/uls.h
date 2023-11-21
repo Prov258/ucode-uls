@@ -31,5 +31,9 @@ bool mx_is_flag(char* flags, int n, char flag);
 int mx_count_cols(int width, int max_len);
 void mx_base_ls(t_list* current, struct winsize ws);
 void mx_ls_l(t_list* current);
+void mx_print_permission(mode_t mode);
+// char mx_check_permission_mode(mode_t mode);
+void mx_make_flag_l(t_list** dir_list, int dir_len);
+
 
 
