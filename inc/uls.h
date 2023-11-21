@@ -35,5 +35,3 @@ void mx_print_permission(mode_t mode);
 // char mx_check_permission_mode(mode_t mode);
 void mx_make_flag_l(t_list** dir_list, int dir_len);
 
-
-

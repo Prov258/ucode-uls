@@ -11,6 +11,5 @@ void mx_print_permission(mode_t mode){
     mx_printchar((S_IROTH & mode) ? 'r' : '-');
     mx_printchar((S_IWOTH & mode) ? 'w' : '-');
     mx_printchar((S_IXOTH & mode) ? 'x' : '-');
-    mx_printstr(" ");
 }
 
