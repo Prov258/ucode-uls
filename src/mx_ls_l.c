@@ -107,7 +107,6 @@ void mx_ls_l(t_list* current) {
 		
 		stat(temp_path, &stat_res);
 		mx_print_permission(stat_res.st_mode);
-		
 		mx_check_attribute(check_space, temp_path);
 
 		char* temp1 = mx_itoa(stat_res.st_nlink);
@@ -128,7 +127,7 @@ void mx_ls_l(t_list* current) {
 			mx_printchar(' ');
 		}
 		mx_printstr(temp2);
-		mx_printchar(' ');
+		mx_printstr("  ");
 
 		grp = getgrgid(stat_res.st_gid);
 		char* temp3 = NULL;
@@ -141,7 +140,7 @@ void mx_ls_l(t_list* current) {
 			mx_printchar(' ');
 		}
 		mx_printstr(temp3);
-		mx_printchar(' ');
+		mx_printstr("  ");
 
 		char* temp4 = mx_itoa(stat_res.st_size);
 		for (int i = 0; i < max_len_size - mx_strlen(temp4); i++){
