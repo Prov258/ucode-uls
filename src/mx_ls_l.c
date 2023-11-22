@@ -1,10 +1,16 @@
 #include "uls.h"
 
 void mx_check_attribute(bool check, char* path){
-	ssize_t check_attr = listxattr(path, NULL, 0);
+	acl_t check_acl;
+	ssize_t check_attr = listxattr(path, NULL, 0, XATTR_NOFOLLOW);
 	if(check_attr > 0){
 		mx_printchar('@');
-	} else {
+	}
+	if ((check_acl = acl_get_file(path, ACL_TYPE_EXTENDED))){
+		mx_printchar('+');
+		acl_free(check_acl);
+	}
+	else {
 		mx_printchar(' ');
 	}
 	if (check){
@@ -34,7 +40,13 @@ void mx_ls_l(t_list* current) {
 		char* temp_path = mx_strjoin(path, (char *) temp->data);
 		stat(temp_path, &stat_res);
 
-		ssize_t check_attr = listxattr(temp_path, NULL, 0);
+		acl_t check_acl;
+		if((check_acl = acl_get_file(path, ACL_TYPE_EXTENDED))){
+			acl_free(check_acl);
+			check_space = true;
+		}
+
+		ssize_t check_attr = listxattr(temp_path, NULL, 0, XATTR_NOFOLLOW);
 		if(check_attr > 0){
 			check_space = true;
 		}
