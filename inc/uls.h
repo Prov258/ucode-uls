@@ -32,5 +32,6 @@ int mx_count_cols(int width, int max_len);
 void mx_base_ls(t_list* current, struct winsize ws);
 void mx_ls_l(t_list* current);
 void mx_print_permission(mode_t mode);
+int mx_ceil_division(int a, int b);
 // char mx_check_permission_mode(mode_t mode);
 

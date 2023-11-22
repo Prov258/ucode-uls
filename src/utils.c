@@ -29,6 +29,10 @@ bool mx_list_cmp(void* a, void* b) {
 	return mx_strcmp((char *) a, (char *) b) > 0;
 }
 
+int mx_ceil_division(int a, int b) {
+	return (a / b) + ((a % b) != 0);
+}
+
 int mx_find_max_name_len(t_list* list) {
 	int max = 0;
 
@@ -39,8 +43,26 @@ int mx_find_max_name_len(t_list* list) {
 		}
 		list = list->next;
 	}
+	if (max % 8 == 0) {
+		max += 8;
+	}
+	else {
+		max = 8 - (max % 8) + max;
+	}
 
 	return max;
+
+	// int max = 0;
+
+	// while (list != NULL) {
+	// 	int len = mx_strlen((char *) list->data);
+	// 	if (len > max) {
+	// 		max = len;
+	// 	}
+	// 	list = list->next;
+	// }
+
+	// return max;
 }
 
 t_list* mx_get_elem_in_list(t_list* list, int index) {
