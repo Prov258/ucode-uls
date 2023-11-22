@@ -12,6 +12,10 @@ int main(int argc, char* argv[]) {
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &ws);
 
 	mx_print_files(file_list, ws);
+	if (file_list != NULL && dir_list_len > 0) {
+		mx_printstr("\n");
+	}
+
 	mx_print_dir(dir_list, dir_list_len, flags, count_flags, ws);
 
 	mx_strdel(&flags);

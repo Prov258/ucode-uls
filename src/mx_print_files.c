@@ -4,7 +4,6 @@ void mx_print_files(t_list* current, struct winsize ws){
 	int max_name_len = mx_find_max_name_len(current);
 	int elements_count = mx_list_size(current);
 	int cols = mx_count_cols(ws.ws_col, max_name_len);
-	// int cols = ws.ws_col / max_name_len;
 	int rows = elements_count / cols;
 	if (elements_count % cols != 0) {
 		rows++;
@@ -28,11 +27,7 @@ void mx_print_files(t_list* current, struct winsize ws){
 			}
 		}
 
-		if (j != rows - 1) {
-			mx_printstr("\n");
-		}
+		mx_printstr("\n");
 	}
-
-	mx_printstr("\n");
 }
 

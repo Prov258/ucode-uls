@@ -1,10 +1,6 @@
 #include "uls.h"
 
 void mx_print_dir(t_list** dir_list, int dir_list_len, char* flags, int flags_count, struct winsize ws){
-	if (dir_list_len > 0) {
-		mx_printstr("\n");
-	}
-
     for (int i = 0; i < dir_list_len; i++) {
 		t_list* current = dir_list[i];
 
@@ -30,3 +26,4 @@ void mx_print_dir(t_list** dir_list, int dir_list_len, char* flags, int flags_co
 		}
 	}
 }
+

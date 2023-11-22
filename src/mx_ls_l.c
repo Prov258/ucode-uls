@@ -157,3 +157,4 @@ void mx_ls_l(t_list* current) {
 		free(temp4);
 	}
 }
+

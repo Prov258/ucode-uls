@@ -35,3 +35,4 @@ char* mx_flag_definition(char* argv[], int argc, int* countArgs, int* countFlags
     mx_check_flag(result);
     return result;
 }
+
