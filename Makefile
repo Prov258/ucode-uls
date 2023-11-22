@@ -22,7 +22,7 @@ $(LIB):
 	make -sC $(LIB_DIR)
 
 $(NAME): $(OBJ_DIR) $(OBJ)
-	$(CC) $(CCFLAGS) $(OBJ) -L $(LIB_DIR) -lmx -lacl -o $@
+	$(CC) $(CCFLAGS) $(OBJ) -L $(LIB_DIR) -lmx -o $@
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)

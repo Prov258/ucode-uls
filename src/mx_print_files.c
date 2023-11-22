@@ -18,12 +18,11 @@ void mx_print_files(t_list* current, struct winsize ws){
 
 			mx_printstr((char *) elem_to_print->data);
 
-			for (int c = 0; c < max_name_len - mx_strlen((char *) elem_to_print->data); c++) {
-				mx_printstr(" ");
-			}
-
-			if (k != cols - 1) {
-				mx_printstr("  ");
+			int tabs_count = mx_ceil_division((max_name_len - mx_strlen((char *) elem_to_print->data)), 8);
+			for (int c = 0; c < tabs_count; c++) {
+				if (k != cols - 1) {
+					mx_printstr("\t");
+				}
 			}
 		}
 
