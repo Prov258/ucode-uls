@@ -21,3 +21,4 @@ void mx_check_flag(char* flags){
         i++;
     }
 }
+
