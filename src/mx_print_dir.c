@@ -7,10 +7,7 @@ void mx_print_dir(t_list** dir_list, int dir_list_len, char* flags, int flags_co
 		if (dir_list_len > 1) {
 			mx_printstr((char *) current->data);
 			mx_printstr(":");
-
-			if (current->next != NULL) {
-				mx_printstr("\n");
-			}
+			mx_printstr("\n");
 		}
 
 		if (current->next != NULL) {

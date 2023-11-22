@@ -51,18 +51,6 @@ int mx_find_max_name_len(t_list* list) {
 	}
 
 	return max;
-
-	// int max = 0;
-
-	// while (list != NULL) {
-	// 	int len = mx_strlen((char *) list->data);
-	// 	if (len > max) {
-	// 		max = len;
-	// 	}
-	// 	list = list->next;
-	// }
-
-	// return max;
 }
 
 t_list* mx_get_elem_in_list(t_list* list, int index) {
