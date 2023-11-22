@@ -1,18 +1,18 @@
 #include "uls.h"
 
-char** mx_arg_definition(char* argv[], int argc, int* p_argumentsCount){
-    int argumentsCount = *p_argumentsCount;
+char** mx_arg_definition(char* argv[], int argc, int* p_arguments_count){
+    int arguments_count = *p_arguments_count;
 
-    if(argumentsCount == 0){
+    if(arguments_count == 0){
         char** result = (char **) malloc(sizeof(char *));
         result[0] = mx_strdup("./");
-        *p_argumentsCount = 1;
+        *p_arguments_count = 1;
 
         return result;
     }
 
-    char** result = (char **)malloc((argumentsCount + 1) * sizeof(char *));
-    int resultCount = 0;
+    char** result = (char **)malloc((arguments_count + 1) * sizeof(char *));
+    int result_count = 0;
     char buf[100];
 
     for (int i = 1; i < argc; i++){
@@ -26,11 +26,11 @@ char** mx_arg_definition(char* argv[], int argc, int* p_argumentsCount){
                 j++;
             }
             buf[j] = '\0';
-            result[resultCount] = mx_strdup(buf);
-            resultCount++;
+            result[result_count] = mx_strdup(buf);
+            result_count++;
         }
     }
-    mx_bubble_sort(result, argumentsCount);
+    mx_bubble_sort(result, arguments_count);
     return result;
 }
 

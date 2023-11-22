@@ -16,8 +16,8 @@
 #include <sys/acl.h>
 #include <errno.h>
 
-char** mx_arg_definition(char* argv[], int argc, int* argumentsCount);
-char* mx_flag_definition(char* argv[], int argc, int* countArgs, int* countFlags);
+char** mx_arg_definition(char* argv[], int argc, int* arguments_count);
+char* mx_flag_definition(char* argv[], int argc, int* count_args, int* count_flags);
 void mx_print_files(t_list* file_list, struct winsize ws);
 void mx_print_dir(t_list** dir_list, int dir_list_len, char* flags, int flags_count, struct winsize ws);
 t_list** mx_filling_arr(char** file_arr, int count_args, t_list** file_list, int* dir_len);
@@ -30,7 +30,7 @@ void mx_arg_error(char* file);
 bool mx_is_flag(char* flags, int n, char flag);
 int mx_count_cols(int width, int max_len);
 void mx_base_ls(t_list* current, struct winsize ws);
-void mx_ls_l(t_list* current);
+void mx_ls_l(t_list* current, char* path);
 void mx_print_permission(mode_t mode);
 int mx_ceil_division(int a, int b);
 // char mx_check_permission_mode(mode_t mode);

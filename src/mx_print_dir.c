@@ -17,7 +17,8 @@ void mx_print_dir(t_list** dir_list, int dir_list_len, char* flags, int flags_co
 			if (flags_count == 0) {
 				mx_base_ls(current->next, ws);
 			} else if (mx_is_flag(flags, flags_count, 'l')) {
-				mx_ls_l(current);
+				char* path = mx_strjoin(current->data, "/");
+				mx_ls_l(current->next, path);
 			}
 		}
 
