@@ -1,21 +1,19 @@
 #include "uls.h"
 
-void mx_check_attribute(bool check, char* path){
+void mx_check_attribute(char* path){
 	acl_t check_acl;
 	ssize_t check_attr = listxattr(path, NULL, 0, XATTR_NOFOLLOW);
 	if(check_attr > 0){
 		mx_printchar('@');
 	}
-	if ((check_acl = acl_get_file(path, ACL_TYPE_EXTENDED))){
+	else if ((check_acl = acl_get_file(path, ACL_TYPE_EXTENDED))){
 		mx_printchar('+');
 		acl_free(check_acl);
 	}
 	else {
 		mx_printchar(' ');
 	}
-	if (check){
-		mx_printchar(' ');
-	}
+	mx_printchar(' ');
 }
 
 void mx_ls_l(t_list* current) {
@@ -24,7 +22,6 @@ void mx_ls_l(t_list* current) {
 	int max_len_link = 0;
 	int max_len_uid = 0;
 	int max_len_grid = 0;
-	bool check_space = false;
 
 	struct stat stat_res;
 	struct passwd *pwd;
@@ -39,17 +36,6 @@ void mx_ls_l(t_list* current) {
 	while (temp != NULL){
 		char* temp_path = mx_strjoin(path, (char *) temp->data);
 		stat(temp_path, &stat_res);
-
-		acl_t check_acl;
-		if((check_acl = acl_get_file(path, ACL_TYPE_EXTENDED))){
-			acl_free(check_acl);
-			check_space = true;
-		}
-
-		ssize_t check_attr = listxattr(temp_path, NULL, 0, XATTR_NOFOLLOW);
-		if(check_attr > 0){
-			check_space = true;
-		}
 
 		char* temp_size = mx_itoa(stat_res.st_size);
 		if(max_len_size < mx_strlen(temp_size)){
@@ -107,7 +93,7 @@ void mx_ls_l(t_list* current) {
 		
 		stat(temp_path, &stat_res);
 		mx_print_permission(stat_res.st_mode);
-		mx_check_attribute(check_space, temp_path);
+		mx_check_attribute(temp_path);
 
 		char* temp1 = mx_itoa(stat_res.st_nlink);
 		for (int i = 0; i < max_len_link - mx_strlen(temp1); i++) {
