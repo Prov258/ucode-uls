@@ -11,7 +11,12 @@ int main(int argc, char* argv[]) {
 	struct winsize ws;
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &ws);
 
-	mx_print_files(file_list, ws);
+	if (count_flags == 0) {
+		mx_print_files(file_list, ws);
+	} else if (mx_is_flag(flags, count_flags, 'l')) {
+		mx_ls_l(file_list, "./");
+	}
+
 	if (file_list != NULL && dir_list_len > 0) {
 		mx_printstr("\n");
 	}

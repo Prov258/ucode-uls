@@ -12,7 +12,7 @@ void mx_check_attribute(bool check, char* path){
 	}
 }
 
-void mx_ls_l(t_list* current) {
+void mx_ls_l(t_list* current, char* path) {
 	int max_size = 0;
 	int max_len_size = 0;
 	int max_len_link = 0;
@@ -23,10 +23,6 @@ void mx_ls_l(t_list* current) {
 	struct stat stat_res;
 	struct passwd *pwd;
 	struct group *grp;
-
-	t_list* parent = current;
-	current = current->next;
-	char* path = mx_strjoin(parent->data, "/");
 
 	long total_blocks = 0;
 	t_list* temp = current;
