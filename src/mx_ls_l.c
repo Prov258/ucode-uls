@@ -16,7 +16,7 @@ void mx_check_attribute(char* path){
 	mx_printchar(' ');
 }
 
-void mx_ls_l(t_list* current, char* path) {
+void mx_ls_l(t_list* current, char* path, bool is_file) {
 	int max_size = 0;
 	int max_len_size = 0;
 	int max_len_link = 0;
@@ -79,9 +79,11 @@ void mx_ls_l(t_list* current, char* path) {
 		free(temp_link);
 		free(temp_path);
 	}
-	mx_printstr("total ");
-	mx_printstr(mx_itoa(total_blocks));
-	mx_printstr("\n");
+	if (!is_file) {
+		mx_printstr("total ");
+		mx_printstr(mx_itoa(total_blocks));
+		mx_printstr("\n");
+	}
         
 	temp = current;
 	while (temp != NULL){
