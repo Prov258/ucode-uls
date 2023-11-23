@@ -14,14 +14,10 @@ int main(int argc, char* argv[]) {
 	if (count_flags == 0) {
 		mx_print_files(file_list, ws);
 	} else if (mx_is_flag(flags, count_flags, 'l')) {
-		mx_ls_l(file_list, "./");
+		mx_ls_l(file_list, "./", true);
 	}
 
-	if (file_list != NULL && dir_list_len > 0) {
-		mx_printstr("\n");
-	}
-
-	mx_print_dir(dir_list, dir_list_len, flags, count_flags, ws);
+	mx_print_dir(dir_list, dir_list_len, file_list, flags, count_flags, ws);
 
 	mx_strdel(&flags);
 	mx_del_strarr(&file_arr);
