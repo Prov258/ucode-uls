@@ -1,7 +1,7 @@
 #include "uls.h"
 
 void mx_check_flag(char* flags){
-    char* temp = "ACGRSTcfglmortux1";
+    char* temp = "ABCFGHLOPRSTUWabcdefghiklmnopqrstuwx1";
     int temp_len = mx_strlen(temp);
     int i = 0;
     while(flags[i] != '\0'){
@@ -15,7 +15,7 @@ void mx_check_flag(char* flags){
             mx_printerr("uls: illegal option -- ");
             mx_printchar(flags[i]);
             mx_printstr("\n");
-            mx_printerr("usage: uls [-ACGRSTcfglmortux1] [file ...]\n");
+            mx_printerr("usage: uls [-ABCFGHLOPRSTUWabcdefghiklmnopqrstuwx1] [file ...]\n");
             exit(1);
         }
         i++;
