@@ -33,5 +33,6 @@ void mx_base_ls(t_list* current, struct winsize ws);
 void mx_ls_l(t_list* current, char* path, bool is_file);
 void mx_print_permission(mode_t mode);
 int mx_ceil_division(int a, int b);
+char* mx_get_time(time_t st_time);
 // char mx_check_permission_mode(mode_t mode);
 
