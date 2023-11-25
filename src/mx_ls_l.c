@@ -133,9 +133,8 @@ void mx_ls_l(t_list* current, char* path, bool is_file) {
 		mx_printstr(temp4);
 		mx_printchar(' ');
 
-		char* time = ctime(&stat_res.st_mtime);
-		time[mx_strlen(time) - 9] = '\0';
-		time += 4;
+
+		char* time = mx_get_time(stat_res.st_mtime);
 
 		mx_printstr(time);
 

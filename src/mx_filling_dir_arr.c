@@ -1,6 +1,6 @@
 #include "uls.h"
 
-t_list** mx_filling_arr(char** file_arr, int count_args, t_list** file_list, int* dir_len){
+t_list** mx_filling_arr(char** file_arr, int count_args, t_list** file_list, int* dir_len, int* error){
     t_list** dir_list = (t_list**) malloc(sizeof(t_list*) * count_args);
 	int dir_list_len = 0;
 	
@@ -11,10 +11,18 @@ t_list** mx_filling_arr(char** file_arr, int count_args, t_list** file_list, int
 		struct dirent *test;
 		struct stat stat_temp;
 
-		if(stat(file_arr[i], &stat_temp) == -1){
+		if (stat(file_arr[i], &stat_temp) == -1) {
 			mx_arg_error(file_arr[i]);
-			exit(1);
+			*error = 1;
+			continue;
 		}
+
+		if (dir == NULL && S_ISDIR(stat_temp.st_mode)) {
+			mx_arg_error(file_arr[i]);
+			*error = 1;
+			continue;
+		}
+
 		if (!S_ISDIR(stat_temp.st_mode)) {
 			mx_push_back(&temp_list, (void *) file_arr[i]);
 		} else {

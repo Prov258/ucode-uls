@@ -20,7 +20,7 @@ char** mx_arg_definition(char* argv[], int argc, int* arguments_count);
 char* mx_flag_definition(char* argv[], int argc, int* count_args, int* count_flags);
 void mx_print_files(t_list* file_list, struct winsize ws);
 void mx_print_dir(t_list** dir_list, int dir_list_len, t_list* file_list, char* flags, int flags_count, struct winsize ws);
-t_list** mx_filling_arr(char** file_arr, int count_args, t_list** file_list, int* dir_len);
+t_list** mx_filling_arr(char** file_arr, int count_args, t_list** file_list, int* dir_len, int* error);
 bool mx_list_cmp(void* a, void* b);
 int mx_find_max_name_len(t_list* list);
 t_list* mx_get_elem_in_list(t_list* list, int index);
@@ -33,5 +33,6 @@ void mx_base_ls(t_list* current, struct winsize ws);
 void mx_ls_l(t_list* current, char* path, bool is_file);
 void mx_print_permission(mode_t mode);
 int mx_ceil_division(int a, int b);
+char* mx_get_time(time_t st_time);
 // char mx_check_permission_mode(mode_t mode);
 
